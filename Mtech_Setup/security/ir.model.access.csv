@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tool_property,access_tool_property,Mtech_Setup.model_tool_property,base.group_user,1,1,1,1
+access_master_sheet_property,access_master_sheet_property,Mtech_Setup.model_master_sheet,base.group_user,1,1,1,1
+access_tool_type,access_tool_type,Mtech_Setup.model_tool_type,base.group_user,1,1,1,1
+access_setup_sheet,access_setup_sheet,Mtech_Setup.model_setup_sheet,base.group_user,1,1,1,1
+access_setup_gallery,access_setup_gallery,Mtech_Setup.model_setup_gallery,base.group_user,1,1,1,1
+access_setup_customer,access_setup_customer,Mtech_Setup.model_setup_customer,base.group_user,1,1,1,1
+access_setup_history,access_setup_history,Mtech_Setup.model_setup_history,base.group_user,1,1,1,1
+access_tool_property,access_tool_property,Mtech_Setup.model_tool_property,base.group_system,1,1,1,1
+access_master_sheet_property,access_master_sheet_property,Mtech_Setup.model_master_sheet,base.group_system,1,1,1,1
+access_tool_type,access_tool_type,Mtech_Setup.model_tool_type,base.group_system,1,1,1,1
+access_setup_sheet,access_setup_sheet,Mtech_Setup.model_setup_sheet,base.group_system,1,1,1,1
+access_setup_gallery,access_setup_gallery,Mtech_Setup.model_setup_gallery,base.group_system,1,1,1,1
+access_setup_customer,access_setup_customer,Mtech_Setup.model_setup_customer,base.group_system,1,1,1,1
+access_setup_history,access_setup_history,Mtech_Setup.model_setup_history,base.group_system,1,1,1,1

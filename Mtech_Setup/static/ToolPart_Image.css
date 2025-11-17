@@ -1,0 +1,16 @@
+.ToolPart_Image .o_field_image img {
+    transform:scale(1.2);
+    position: relative;
+    top: 100px;
+    left: 200px;
+
+    box-sizing: content-box;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.ToolPart_Image .o_field_image img:hover {
+    transform: rotate(0deg) scale(1.3);
+}
