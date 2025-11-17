@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <menuitem id = "menu_inventory" name = "Inventory">
+        <menuitem id = "menu_tools" name = "Tools">
+            <menuitem id = "Drill_Menu" name = "Drills" action = "tool_action_property"/>
+            <menuitem id = "OD_Menu" name = "OD" action = "od_action_property"/>
+            <menuitem id = "ID_Menu" name = "ID" action = "id_action_property"/>
+            <menuitem id = "PartOff" name = "PartOff" action = "partoff_action_property"/>
+        </menuitem>
+        <menuitem id = "menu_setup" name = "Setup">
+            <menuitem id = "menu_sheet" name = "Sheet" action = "setup_sheet_action_property"/>
+        </menuitem>
+        <menuitem id = "menu_setting" name = "Setting">
+            <menuitem id = "menu_customer_config" name = "Customer" action="customer_settings_action_property"/>
+            <menuitem id = "menu_setup_config" name = "Property" action="setup_settings_action_property"/>
+        </menuitem>
+    </menuitem>
+</odoo>

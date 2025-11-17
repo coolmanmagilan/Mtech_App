@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <template id = "setup_sheet_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="Page">
+                        <div>
+                            <h3>Setup Sheet</h3>
+                            <p><strong>Employee Name:</strong> <t t-esc="doc.EmployeeName" style="border:1px solid #0000"/></p>
+                            <p><strong>Date:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>Customer:</strong> <t t-esc="doc.Customers"/></p>
+                            <p><strong>Machine_ID:</strong> <t t-esc="doc.Machine_ID"/></p>
+                            <p><strong>PartName:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>DrawingNumber:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>Revision:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>Material:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>CNC_ProgramNumber:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>Operation:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>CycleTime:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>WorkOffset:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>WorkHolding:</strong> <t t-esc="doc.Date"/></p>
+                            <p><strong>MountingFixture:</strong> <t t-esc="doc.Date"/></p>
+                        </div>
+                        <table border="1" style="width:100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style=" border-collapse: collapse;">Tool Number</th>
+                                    <th style=" border-collapse: collapse;">Tool Description</th>
+                                    <th style=" border-collapse: collapse;">Tool Holder</th>
+                                    <th style=" border-collapse: collapse;">Insert Description</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.SetupSheet_Child" t-as="line">
+                                    <td><t t-esc="line.ToolNumber"/></td>
+                                    <td><t t-esc="line.ToolDescription"/></td>
+                                    <td><t t-esc="line.ToolHolder"/></td>
+                                    <td><t t-esc="line.InsertDescription"/></td>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="page-break-before: always;">
+                        <table style="width:100%; border-collapse: collapse; font-family: Arial, sans-serif; text-align:center;">
+                            <tr style="background-color:#4CAF50; color:white;">
+                                <th style="border:1px solid #ddd; padding:4px;">Tool Sheet</th>
+                                <th style="border:1px solid #ddd; padding:4px;">Image</th>
+                            </tr>
+                            <t t-foreach="doc.Gallery_id" t-as="line">
+                                <tr style="border-bottom:2px solid #000000;">
+                                    <td style="padding:4px; vertical-align: middle; text-align:left;">
+                                        <t t-esc="line.name"/>
+                                    </td>
+
+                                    <td style="padding:4px; vertical-align: middle; text-align:center;">
+                                        <img t-if="line.ImageGallery"
+                                             t-att-src="'data:image/png;base64,%s' % line.ImageGallery.decode()"
+                                             style="width:5.5in; height:5.5in; border:1px solid #ccc; border-radius:4px;"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                    <div style="page-break-before: always; text-align:center;">
+                        <img t-if="doc.ControllerImage"
+                             t-att-src="'data:image/png;base64,%s' % doc.ControllerImage.decode()"
+                             style="width:100%; height:100%; object-fit:contain;"/>
+                    </div>
+                </t>
+            </t>
+
+        </t>
+    </template>
+
+    <record id="paperformat_tabloid" model="report.paperformat">
+        <field name="name">Tabloid</field>
+        <field name="default">False</field>
+        <field name="format">Tabloid</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+    </record>
+
+
+
+    <record id="action_report_setup_sheet" model="ir.actions.report">
+        <field name="name">Print Setup Sheet</field>
+        <field name="model">master.sheet</field> <!-- directly reference the model -->
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Mtech_Setup.setup_sheet_report_template</field>
+        <field name="report_file">Mtech_Setup.setup_sheet_report_template</field>
+        <field name="print_report_name">'Setup Sheet'</field>
+        <field name="binding_model_id" ref="Mtech_Setup.model_master_sheet"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="Mtech_Setup.paperformat_tabloid"/>
+    </record>
+
+
+</odoo>
+

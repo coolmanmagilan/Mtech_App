@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id = "property_type_sumocham" model = 'tool.type'>
+            <field name = "ToolType">Sumocham</field>
+            <field name = "ToolPart">Drill</field>
+        </record>
+        <record id = "property_type_insert" model = 'tool.type'>
+            <field name = "ToolType">Insert</field>
+            <field name = "ToolPart">Drill</field>
+        </record>
+        <record id = "property_type_rough_OD" model = 'tool.type'>
+            <field name = "ToolType">Rough</field>
+            <field name = "ToolPart">OD</field>
+        </record>
+        <record id = "property_type_finish_OD" model = 'tool.type'>
+            <field name = "ToolType">Finish</field>
+            <field name = "ToolPart">OD</field>
+        </record>
+        <record id = "property_type_rough_ID" model = 'tool.type'>
+            <field name = "ToolType">Rough</field>
+            <field name = "ToolPart">ID</field>
+        </record>
+        <record id = "property_type_finish_ID" model = 'tool.type'>
+            <field name = "ToolType">Finish</field>
+            <field name = "ToolPart">ID</field>
+        </record>
+        <record id = "property_type_penta" model = 'tool.type'>
+            <field name = "ToolType">Penta</field>
+            <field name = "ToolPart">Partoff</field>
+        </record>
+        <record id = "property_type_shape" model = 'tool.type'>
+            <field name = "ToolType">Shape</field>
+            <field name = "ToolPart">Partoff</field>
+        </record>
+        <record id = "property_type_blade" model = 'tool.type'>
+            <field name = "ToolType">Blade</field>
+            <field name = "ToolPart">Partoff</field>
+        </record>
+    </data>
+</odoo>

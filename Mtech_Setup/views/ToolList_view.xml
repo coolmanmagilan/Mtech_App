@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+
+        ---------------------------------Open Tool Form---------------------------------------------
+
+        <record id = "tool_property_form_view" model = "ir.ui.view">
+            <field name="name">tool.property.form</field>
+            <field name="model">tool.property</field>
+            <field name="arch" type = "xml">
+               <form>
+                    <sheet>
+                        <group col = "3">
+                            <group>
+                                <field name = "ToolPart" invisible="1"/>
+                                <field name = "ToolNumber"/>
+                                <field name = "Tool_id" widget="selection"/>
+                                <field name = "Supplier"/>
+                            </group>
+                            <group>
+                                <field name = "Diameter"/>
+                                <field name = "Length"/>
+                                <field name = "Duplicate"/>
+                            </group>
+                            <group>
+                                <field name = "SelectUnits"/>
+                            </group>
+                        </group>
+                        <group>
+                                <field name = "ToolDescription"/>
+                        </group>
+                        <button name = "SubmitAction" string="Submit" type = "object" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        --------------------------------Add Tool Table------------------------------------------
+
+        <record id = "tool_property_tree_view" model = "ir.ui.view">
+            <field name="name">tool.property.tree</field>
+            <field name="model">tool.property</field>
+            <field name="arch" type = "xml">
+                    <tree>
+                        <field name = "ToolNumber"/>
+                        <field name = "Tool_id"/>
+                        <field name = "Supplier"/>
+                        <field name = "adj_Diameter"/>
+                        <field name = "adj_Length"/>
+                        <field name = "ToolDescription"/>
+                        <field name = "Duplicate"/>
+                    </tree>
+            </field>
+        </record>
+
+        -----------------------------Tool Action-------------------------------------
+
+        <record id = "tool_action_property" model = "ir.actions.act_window">
+            <field name = "name">Drill</field>
+            <field name = "res_model">tool.property</field>
+            <field name = "view_mode">tree,form</field>
+            <field name = "view_id" ref = "tool_property_tree_view"/>
+            <field name = "context">{'default_ToolPart':'Drill'}</field>
+            <field name = "domain">[('ToolPart', '=', 'Drill')]</field>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+        <record id = "od_action_property" model = "ir.actions.act_window">
+            <field name = "name">OD</field>
+            <field name = "res_model">tool.property</field>
+            <field name = "view_mode">tree,form</field>
+            <field name = "view_id" ref = "tool_property_tree_view"/>
+            <field name = "context">{'default_ToolPart':'OD'}</field>
+            <field name = "domain">[('ToolPart', '=', 'OD')]</field>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+        <record id = "id_action_property" model = "ir.actions.act_window">
+            <field name = "name">ID</field>
+            <field name = "res_model">tool.property</field>
+            <field name = "view_mode">tree,form</field>
+            <field name = "view_id" ref = "tool_property_tree_view"/>
+            <field name = "context">{'default_ToolPart':'ID'}</field>
+            <field name = "domain">[('ToolPart', '=', 'ID')]</field>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+        <record id = "partoff_action_property" model = "ir.actions.act_window">
+            <field name = "name">Partoff</field>
+            <field name = "res_model">tool.property</field>
+            <field name = "view_mode">tree,form</field>
+            <field name = "view_id" ref = "tool_property_tree_view"/>
+            <field name = "context">{'default_ToolPart':'Partoff'}</field>
+            <field name = "domain">[('ToolPart', '=', 'Partoff')]</field>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

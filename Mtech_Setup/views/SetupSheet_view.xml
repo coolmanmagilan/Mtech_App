@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+
+        -----------------------------Create Master Page--------------------------------
+
+        <record id = "setup_sheet_property_form_view" model = "ir.ui.view">
+            <field name="name">master.sheet.form</field>
+            <field name="model">master.sheet</field>
+            <field name="arch" type = "xml">
+                    <form create = 'False'>
+                        <header>
+                            ----------------Add Print Button OnTop----------------
+                            <button name = "print_pdf" type = 'object' string="Print as PDF"/>
+                        </header>
+                        <notebook>
+                            <page string = 'PART SETUP DETAILS'>
+                                <div>
+                                    <group>
+                                        ----------Add Form-----------------
+                                        <group>
+                                            <field name = "EmployeeName"/>
+                                            <field name = "Date"/>
+                                            <field name = "Customers"/>
+                                            <field name = "Machine_ID"/>
+                                            <field name = "Part_id"/>
+                                            <field name = "DrawingNumber"/>
+                                            <field name = "Revision"/>
+                                            <field name = "Material"/>
+                                            <field name = "CNC_ProgramNumber"/>
+                                            <field name = "Operation"/>
+                                            <field name = "CycleTime"/>
+                                            <field name = "WorkOffset"/>
+                                            <field name = "WorkHolding"/>
+                                            <field name = "MountingFixture"/>
+
+                                        </group>
+
+                                        -------------------------Add Part Image-------------------------------
+
+                                        <group>
+                                             <div class="ToolPart_Image">
+                                                <field name="PartImage" widget="image" nolabel="1" style = "width: 200px; height: 150px;" />
+                                            </div>
+                                        </group>
+                                    </group>
+
+                                    -------------------------Add Table below---------------------------
+
+                                    <field name = 'SetupSheet_Child'>
+                                        <tree>
+                                            <field name="ToolNumber"/>
+                                            <field name="ToolDescription"/>
+                                            <field name="ToolHolder"/>
+                                            <field name="InsertDescription"/>
+                                            <button name = "action_view_setup_tool"
+                                                    type = "object"
+                                                    class="oe_highlight"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </page>
+
+                            <page string = 'IMPORTANT NOTES'>
+                                <div>
+                                    <group>
+                                        <field name = "LessonLearntNotes"/>
+                                        <field name = "ProgramModificationNotes"/>
+                                    </group>
+                                </div>
+
+                                <div class = "o_form_footnote">
+                                    <group>
+                                        <field name = "SetupVerified"/>
+                                    </group>
+                                    <group>
+                                        <field name = "RecordVerified"/>
+                                    </group>
+                                </div>
+                            </page>
+                            <page string="TOOLING DETAILS">
+                                <field name="Gallery_id" string="Images" widget="many2many_kanban">
+                                    <kanban class = "o_kanban_small_column">
+                                        <templates>
+                                            <t t-name = "kanban-box">
+                                                <div class = 'oe_kanban_card'>
+                                                    <div class="kanban-header" style="
+                                                                font-size: 1.2rem;       /* Larger text */
+                                                                font-weight: bold;       /* Bold font */
+                                                                color: #000000;          /* White text */
+                                                                padding: 8px 12px;       /* Spacing around text */
+                                                                border-radius: 4px 4px 0 0; /* Rounded top corners */
+                                                                text-align: center;      /* Centered text */
+                                                            ">
+                                                        <field name="ToolSheet_id"/>
+                                                    </div>
+                                                        <field name="ImageGallery" widget="image"/>
+                                                        <button type="object"
+                                                                name="action_delete_record"
+                                                                class="btn btn-danger btn-sm"
+                                                                icon="oi-close"
+                                                                title="Delete"/>
+
+                                                </div>
+                                            </t>
+                                        </templates>
+
+                                    </kanban>
+                                </field>
+                            </page>
+
+                             <page string = 'Controlled Documents'>
+                                <div style="height:2000px;">
+                                    <group>
+                                        <field name="ControllerDocument" filename="ControllerDocument_filename" widget="pdf"/>
+                                        <field name="ControllerImage" widget="image" />
+                                    </group>
+                                </div>
+                            </page>
+                        </notebook>
+
+                    </form>
+            </field>
+        </record>
+
+        <record id = "setup_tool_property_form_view" model = "ir.ui.view">
+            <field name="name">setup.sheet.form</field>
+            <field name="model">setup.sheet</field>
+            <field name="arch" type = "xml">
+                    <form>
+                        <sheet>
+                            <group>
+                                <field name = "Tool_id" options="{'no_create': True}"/>
+
+                                <field name = "ToolNumber"/>
+                                <field name = "ToolDescription"/>
+                                <field name = "ToolHolder"/>
+                                <field name = "InsertDescription"/>
+                            </group>
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+
+         <record id = "setup_gallery_property_form_view" model = "ir.ui.view">
+            <field name="name">setup.gallery.form</field>
+            <field name="model">setup.gallery</field>
+            <field name="arch" type = "xml">
+                    <form>
+                        <sheet>
+                            <group>
+
+                                <field name = "ImageGallery"/>
+                                <field name = "ToolSheet_id"/>
+                            </group>
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+
+        <record id = "customer_tree_property" model = "ir.ui.view">
+            <field name="name">setup.customer.tree</field>
+            <field name="model">setup.customer</field>
+            <field name="arch" type = "xml">
+                    <tree>
+                        <field name = "name"/>
+                    </tree>
+            </field>
+        </record>
+
+        <record id = "setting_tree_property" model = "ir.ui.view">
+            <field name="name">setup.history.tree</field>
+            <field name="model">setup.history</field>
+            <field name="arch" type = "xml">
+                    <tree>
+                        <field name = "name"/>
+                        <field name = "DrawingNumber"/>
+                        <field name = "Revision"/>
+                        <field name = "Material"/>
+                        <field name = "CNC_ProgramNumber"/>
+                        <field name = "CycleTime"/>
+                        <field name = "ControllerDocument_filename"/>
+                        <field name = "ControllerDocument"/>
+
+                    </tree>
+            </field>
+        </record>
+
+
+        ------------------------------------------------Setup Actions-----------------------------------------------------
+
+                <record id = "setup_sheet_action_property" model = "ir.actions.act_window">
+            <field name = "name">Tool</field>
+            <field name = "res_model">master.sheet</field>
+            <field name = "view_mode">form</field>
+            <field name = "view_id" ref = "setup_sheet_property_form_view"/>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+        <record id = "setup_tool_action_property" model = "ir.actions.act_window">
+            <field name = "name">Print</field>
+            <field name = "res_model">setup.sheet</field>
+            <field name = "view_mode">form</field>
+            <field name = "view_id" ref = "setup_tool_property_form_view"/>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+
+        <record id = "customer_settings_action_property" model = "ir.actions.act_window">
+            <field name = "name">Config</field>
+            <field name = "res_model">setup.customer</field>
+            <field name = "view_mode">tree</field>
+            <field name = "view_id" ref = "customer_tree_property"/>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+        <record id = "setup_settings_action_property" model = "ir.actions.act_window">
+            <field name = "name">Config</field>
+            <field name = "res_model">setup.history</field>
+            <field name = "view_mode">tree</field>
+            <field name = "view_id" ref = "setting_tree_property"/>
+            <field name = "help" type = "html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new tool from inventory
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
